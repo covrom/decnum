@@ -1147,3 +1147,26 @@ func (a Quad) Truncate(n int32) Quad {
 
 	return Quad(C.mdq_roundM(C.struct_Quad(a), C.int32_t(n), C.int(RoundDown)))
 }
+
+// UnmarshalJSON implements the json.Unmarshaler interface.
+func (a *Quad) UnmarshalJSON(bytes []byte) error {
+	var str string
+	if len(bytes) != 0 && bytes[0] == '"' {
+		str = string(bytes[1 : len(bytes)-1])
+	} else {
+		str = string(bytes)
+	}
+
+	d, err := FromString(str)
+	*a = d
+	if err != nil {
+		return fmt.Errorf("Error decoding string '%s': %s", str, err)
+	}
+	return nil
+}
+
+// MarshalJSON implements the json.Marshaler interface.
+func (a Quad) MarshalJSON() ([]byte, error) {
+	str := "\"" + a.String() + "\""
+	return []byte(str), nil
+}
