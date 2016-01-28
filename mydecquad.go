@@ -848,6 +848,14 @@ func FromInt64(value int64) Quad {
 	return Quad(C.mdq_from_int64(C.int64_t(value)))
 }
 
+func FromFloat(value float64) Quad {
+	q, err := FromString(strconv.FormatFloat(value, 'f', -1, 64))
+	if err != nil {
+		panic(err)
+	}
+	return q
+}
+
 /************************************************************************/
 /*                                                                      */
 /*                      conversion to string                            */
