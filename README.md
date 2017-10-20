@@ -32,12 +32,12 @@ __This Go package only uses the decQuad data type__ (128 bits), which can store 
 It is very much like the float64, except that its precision is better (float64 has a precision of only 15 digits), and it works in base-10 instead of base-2.
 
 I have only written the following files:
-   - [mydecquad.c](https://github.com/rin01/decnum/blob/master/mydecquad.c)
-   - [mydecquad.h](https://github.com/rin01/decnum/blob/master/mydecquad.h)
-   - [mydecquad.go](https://github.com/rin01/decnum/blob/master/mydecquad.go)
-   - [mydecquad_test.go](https://github.com/rin01/decnum/blob/master/mydecquad_test.go)
-   - [mydecquad_run_cowlishaw_test.go](https://github.com/rin01/decnum/blob/master/mydecquad_run_cowlishaw_test.go)
-   - [doc.go](https://github.com/rin01/decnum/blob/master/doc.go)
+   - [mydecquad.c](https://github.com/covrom/decnum/blob/master/mydecquad.c)
+   - [mydecquad.h](https://github.com/covrom/decnum/blob/master/mydecquad.h)
+   - [mydecquad.go](https://github.com/covrom/decnum/blob/master/mydecquad.go)
+   - [mydecquad_test.go](https://github.com/covrom/decnum/blob/master/mydecquad_test.go)
+   - [mydecquad_run_cowlishaw_test.go](https://github.com/covrom/decnum/blob/master/mydecquad_run_cowlishaw_test.go)
+   - [doc.go](https://github.com/covrom/decnum/blob/master/doc.go)
 
 The other .c and .h files in the directory come from the original C decNumber package.
 
@@ -49,15 +49,15 @@ Strings passed from Go to C using C.CString(s).
 
 __Installation__:
 
-    go get github.com/rin01/decnum
+    go get github.com/covrom/decnum
 
 
 ### Godoc
-https://godoc.org/github.com/rin01/decnum
+https://godoc.org/github.com/covrom/decnum
 
 
 ### Test
-The test file [mydecquad_test.go](https://github.com/rin01/decnum/blob/master/mydecquad_test.go) is very instructive.
+The test file [mydecquad_test.go](https://github.com/covrom/decnum/blob/master/mydecquad_test.go) is very instructive.
 
 Run the test:
 
