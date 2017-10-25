@@ -179,6 +179,8 @@ func Test_simple_functions(t *testing.T) {
 
 	a, _ = FromString("123.45")
 
+	t.Logf("%#v\n", a)
+
 	b = a
 
 	if b.String() != "123.45" || b.Error() != nil {
