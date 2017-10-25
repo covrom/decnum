@@ -5,7 +5,7 @@ import (
 )
 
 // The decQuad decimal 128-bit type, accessible by all sizes
-type DecQuad [4]uint32
+type DecQuad [4]uint32 // little-endian
 
 // Context for operations, with associated constants
 type Rounding byte
@@ -405,7 +405,7 @@ func decFinalize(num bcdnum, set *DecContext) (df DecQuad) {
 
 	encode |= uint32(dpd) >> 6
 
-	df[0] = encode
+	df[3] = encode
 
 	encode = uint32(dpd) << 26
 
@@ -456,7 +456,7 @@ func decFinalize(num bcdnum, set *DecContext) (df DecQuad) {
 	}
 
 	encode |= uint32(dpd) >> 4
-	df[1] = encode
+	df[2] = encode
 
 	encode = uint32(dpd) << 28
 
@@ -507,7 +507,7 @@ func decFinalize(num bcdnum, set *DecContext) (df DecQuad) {
 	}
 
 	encode |= uint32(dpd) >> 2
-	df[2] = encode
+	df[1] = encode
 
 	encode = uint32(dpd) << 30
 
@@ -558,7 +558,7 @@ func decFinalize(num bcdnum, set *DecContext) (df DecQuad) {
 
 	encode |= dpd
 
-	df[3] = encode
+	df[0] = encode
 
 	return
 }
