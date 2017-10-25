@@ -7,6 +7,44 @@ import (
 // The decQuad decimal 128-bit type, accessible by all sizes
 type DecQuad [4]uint32 // little-endian
 
+func (x DecQuad) Bytes() (res [16]byte){
+	res[0] = byte(x[0])
+	res[1] = byte(x[0]>>8)
+	res[2] = byte(x[0]>>16)
+	res[3] = byte(x[0]>>24)
+	res[4] = byte(x[1])
+	res[5] = byte(x[1]>>8)
+	res[6] = byte(x[1]>>16)
+	res[7] = byte(x[1]>>24)
+	res[8] = byte(x[2])
+	res[9] = byte(x[2]>>8)
+	res[10] = byte(x[2]>>16)
+	res[11] = byte(x[2]>>24)
+	res[12] = byte(x[3])
+	res[13] = byte(x[3]>>8)
+	res[14] = byte(x[3]>>16)
+	res[15] = byte(x[3]>>24)
+	return
+}
+
+func (x DecQuad) Longs() (res [2]uint64){
+	res[0] = uint64(x[0])&uint64(x[1])<<32
+	res[1] = uint64(x[2])&uint64(x[3])<<32
+	return
+}
+
+func (x DecQuad) Shorts() (res [8]uint16){
+	res[0] = uint16(x[0])
+	res[1] = uint16(x[0]>>16)
+	res[2] = uint16(x[1])
+	res[3] = uint16(x[1]>>16)
+	res[4] = uint16(x[2])
+	res[5] = uint16(x[2]>>16)
+	res[6] = uint16(x[3])
+	res[7] = uint16(x[3]>>16)
+	return
+}
+
 // Context for operations, with associated constants
 type Rounding byte
 
